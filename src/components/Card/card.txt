@@ -1,0 +1,1 @@
+dentro de la carpeta estaria el archivo jsx, css
