@@ -6,29 +6,34 @@ import Col from 'react-bootstrap/Col';
 import './cardProduct.css';
 import { RankedStar } from '../Ranked';
 import { armar } from '../../hooks/armarStar';
+import { useSelector } from 'react-redux';
 const CardProduct = ({ dato }) => {
   const [star, setStar] = useState(armar(dato.voto));
-  const [heart, setHeart] = useState('bi-heart');
+  const { user } = useSelector((state) => state);
+  const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
     setStar(armar(dato.voto));
   }, [dato.voto]);
 
+  const addFavorite = () => {
+    setFavorite(!favorite);
+  };
+
   return (
     <>
       <Container className="conteiner">
         <Row>
-          <Col style={{ padding: 0 }}>
-            {' '}
+          <Col>
             <Card.Img
               className="imgProduct"
-              variant="top"
-              src="holder.js/100px180"
+              style={{ marginTop: 15 }}
+              src="https://www.veteralia.com/wp-content/uploads/2017/03/Intro.jpg"
             />{' '}
           </Col>
-          <Col className="d-flex" style={{ padding: 0 }}>
+          <Col className="d-flex">
             <Col className="d-flex align-items-center">
-              <Card.Body className="text-center">
+              <Card.Body className="text-center" style={{ marginBottom: 10 }}>
                 <Card.Title className="titleProduct">{dato.title}</Card.Title>
                 <Card.Subtitle className="artistaProduct">
                   Card Title
@@ -40,8 +45,11 @@ const CardProduct = ({ dato }) => {
               </Card.Body>
             </Col>
             <div>
-              <button>
-                <i class={`bi ${heart}`}></i>
+              <button
+                onClick={() => {
+                  addFavorite();
+                }}>
+                <i className={!favorite ? `bi bi-heart` : 'bi-heart-fill'}></i>
               </button>
             </div>
           </Col>
