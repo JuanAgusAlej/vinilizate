@@ -1,0 +1,1 @@
+export { default as RankedStar } from './RankedStar.jsx';
