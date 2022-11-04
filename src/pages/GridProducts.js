@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { fakeData } from "../seed";
+import { fakeData } from '../hooks/seed';
 
 
 const GridProducts = () => {

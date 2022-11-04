@@ -28,7 +28,7 @@ const CardProduct = ({ dato }) => {
             <Card.Img
               className="imgProduct"
               style={{ marginTop: 15 }}
-              src="https://www.veteralia.com/wp-content/uploads/2017/03/Intro.jpg"
+              src={dato.img}
             />{' '}
           </Col>
           <Col className="d-flex">
