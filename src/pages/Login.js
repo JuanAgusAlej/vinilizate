@@ -31,19 +31,23 @@ const Login = () => {
       <h1 className="header">Login</h1>
       <form className="row g-3">
         <div className=" col-6">
-          <label className="col-form-label" onChange={handleChangeEmail}>
-            Email:
-          </label>
+          <label className="col-form-label">Email:</label>
           <br />
-          <input type="text" className="form-control" />
+          <input
+            type="text"
+            className="form-control"
+            onChange={handleChangeEmail}
+          />
         </div>
         <br />
         <div className="col-6">
-          <label className="col-form-label" onChange={handleChangePassword}>
-            Password:
-          </label>
+          <label className="col-form-label">Password:</label>
           <br />
-          <input type="password" className="form-control" />
+          <input
+            type="password"
+            className="form-control"
+            onChange={handleChangePassword}
+          />
         </div>
         <br />
         <Button className="btn btn-primary" onClick={onSubmit}>
