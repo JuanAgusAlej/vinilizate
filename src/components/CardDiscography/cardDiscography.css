@@ -1,0 +1,31 @@
+.boxDiscography {
+    margin-top: 25px !important;
+    margin-inline: 55px !important;
+    background: #212E35;
+    border-radius: 30px !important;
+}
+
+.imgDiscography {
+    width: 90%;
+    height: 215px;
+    margin: 10px;
+    background: #9E9898;
+    border-radius: 30px;
+}
+.titleDiscography{
+font-family: 'Inter';
+font-weight: 400;
+font-size: 1.5em;
+color: #FFFFFF;
+}
+.bodyDiscography{
+    padding: 0px;
+}
+.priceDiscography{
+height: 30px;
+font-family: 'Inter';
+font-style: normal;
+font-size: 1em;
+line-height: 19px;
+color: #FFFFFF;
+}
