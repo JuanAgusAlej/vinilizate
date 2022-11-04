@@ -1,4 +1,4 @@
-const fakeData = [
+export const fakeData = [
   {
     id: 1,
     img: "https://img.freepik.com/psd-gratis/maqueta-portada-disco-vinilo-fondo-naranja_23-2149379034.jpg?w=2000",
