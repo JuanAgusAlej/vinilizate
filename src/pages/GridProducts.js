@@ -1,12 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { fakeData } from '../hooks/seed';
-
+import { fakeData } from "../hooks/seed";
 
 const GridProducts = () => {
   const [products, setProducts] = useState(fakeData);
-  
-  
+
   /* const fetchProducts = async () => {
     const {
       data: { results },
@@ -20,7 +18,6 @@ const GridProducts = () => {
   }, []);
 
    */
-  
 
   return (
     <>
@@ -28,13 +25,8 @@ const GridProducts = () => {
         <div className="row">
           {products.map((product) => (
             <div key={product.id} className="col-sm-4">
-              <img
-                src={product.img}
-                height={600}
-                width="100%"
-              />
+              <img src={product.img} height={300} width="100%" />
               <h4>{product.name}</h4>
-              
             </div>
           ))}
         </div>
@@ -43,4 +35,4 @@ const GridProducts = () => {
   );
 };
 
-export default GridProducts
+export default GridProducts;
