@@ -6,7 +6,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [lastName, setLastname] = useState("");
   const navigate = useNavigate();
 
   const handleChangeEmail = (e) => {
@@ -26,13 +26,14 @@ const Register = () => {
     console.log(e.target.value);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     axios
-      .post("/register", {
+      .post("http://localhost:8080/api/users/register", {
         email,
         password,
         name,
-        lastname,
+        lastName,
       })
       .then(() => console.log("User created:"))
       .then(() => navigate("/"))
@@ -41,7 +42,7 @@ const Register = () => {
 
   return (
     <div className="container">
-      <form className="row g-3">
+      <form className="row g-3" onSubmit={onSubmit}>
         <div className="col-6">
           <label className="col-form-label">Email</label>
           <input
@@ -76,7 +77,7 @@ const Register = () => {
         </div>
 
         <br />
-        <button type="submit" className="btn btn-primary" onClick={onSubmit}>
+        <button type="submit" className="btn btn-primary">
           Sign in
         </button>
       </form>
