@@ -6,18 +6,20 @@ import GridProducts from "./pages/GridProducts"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import ProductDetalle from "./pages/ProductDetalle/ProductDetalle";
-
+import { Navbar } from './components/Navbar';
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route path="/" index element={<GridProducts/>} />
-        <Route path="/shoppingCart" element={<ShoppingCart/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/:id" element={<ProductDetalle/>} />
+        <Route path="/" index element={<GridProducts />} />
+        <Route path="/shoppingCart" element={<ShoppingCart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/:id" element={<ProductDetalle />} />
       </Routes>
+
     </BrowserRouter>
   );
 }
