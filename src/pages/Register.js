@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./styles/register.css";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -41,6 +42,7 @@ const Register = () => {
 
   return (
     <div className="container">
+      <h1>Welcome!</h1>
       <form className="row g-3">
         <div className="col-6">
           <label className="col-form-label">Email</label>

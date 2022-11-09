@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+
+import "./styles/login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -50,9 +51,9 @@ const Login = () => {
           />
         </div>
         <br />
-        <Button className="btn btn-primary" onClick={onSubmit}>
+        <button className="btn" onClick={onSubmit}>
           Login
-        </Button>
+        </button>
       </form>
     </div>
   );
