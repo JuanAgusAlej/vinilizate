@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import { userLogin } from "../app/user";
 import "./styles/login.css";
@@ -45,10 +45,10 @@ const Login = () => {
   }, [email]);
 
   return (
-    <div className="container">
-      <h1 className="header">Login</h1>
-      <form className="row g-3">
-        <div className=" col-6">
+    <div className="container-login">
+      <h1 className="header-login">Login</h1>
+      <form>
+        <div className="col-login">
           <label className="col-form-label">Email:</label>
           <br />
           <input
@@ -58,7 +58,7 @@ const Login = () => {
           />
         </div>
         <br />
-        <div className="col-6">
+        <div className="col-login">
           <label className="col-form-label">Password:</label>
           <br />
           <input
@@ -68,9 +68,12 @@ const Login = () => {
           />
         </div>
         <br />
-        <button className="btn" onClick={onSubmit}>
-          Login
-        </button>
+        <div className="row text-center">
+          <button className="btn btn-login" onClick={onSubmit}>
+            Login
+          </button>
+          <Link to="/register"> Register Now!</Link>
+        </div>
       </form>
     </div>
   );

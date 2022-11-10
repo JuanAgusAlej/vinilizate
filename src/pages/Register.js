@@ -41,8 +41,8 @@ const Register = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Welcome!</h1>
+    <div className="container-register">
+      <h1 className="titulo-register">Welcome!</h1>
       <form className="row g-3">
         <div className="col-6">
           <label className="col-form-label">Email</label>

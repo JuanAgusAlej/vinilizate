@@ -28,9 +28,9 @@ const Checkout = () => {
   return !products ? (
     "The Cart is Empty"
   ) : (
-    <div className="container">
+    <div className="container-checkout">
       <h1>Checkout</h1>
-      <table className="table table-dark align-middle">
+      <table className="table table-dark align-middle font-color">
         <thead>
           <tr>
             <th scope="col" className="col">
@@ -50,7 +50,7 @@ const Checkout = () => {
         </thead>
         <tbody>
           {products.map((item) => (
-            <tr key={item.id} className="table">
+            <tr key={item.id}>
               <td>1</td>
               <td>{item.name}</td>
               <td>{item.price}</td>
