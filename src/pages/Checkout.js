@@ -1,13 +1,12 @@
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { shoppingInitialState } from "../components/ShoppingCart/shoppingReducer";
 import "./styles/checkout.css";
 import { Link } from "react-router-dom";
 
 const Checkout = () => {
   const navigate = useNavigate;
-  const [cartItems, setCartItems] = useState([shoppingInitialState]);
+  const [cartItems, setCartItems] = useState([]);
 
   const products = cartItems[0].products;
 
