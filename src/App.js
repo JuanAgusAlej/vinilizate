@@ -11,15 +11,22 @@ import { Navbar } from './components/Navbar';
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" index element={<GridProducts />} />
-        <Route path="/shoppingCart" element={<ShoppingCart />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/:id" element={<ProductDetalle />} />
-      </Routes>
-
+      <div class="row">
+        <div class="col-2">
+          <Navbar />
+        </div>
+        <div class="col-8">
+          <Routes>
+            <Route path="/" index element={<GridProducts />} />
+            <Route path="/category/:id" index element={<GridProducts />} />
+            <Route path="/shoppingCart" element={<ShoppingCart />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/:id" element={<ProductDetalle />} />
+          </Routes>
+        </div>
+        <div class="col-2"></div>
+      </div>
     </BrowserRouter>
   );
 }
