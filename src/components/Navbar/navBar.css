@@ -1,0 +1,31 @@
+.boxItems {
+    min-width: 230px;
+    margin-top: 48px;
+    padding-inline: 15px;
+}
+
+.navbar {
+    min-width: 230px;
+    background: #1C6EA4;
+    right: unset;
+    padding: 0;
+    border-right: 3px double #f6f6f6;
+    min-height: 100vh;
+    align-items: baseline;
+}
+
+.navbar a {
+    font-family: 'Inter';
+    color: white;
+    text-decoration: none;
+}
+
+.navbar a :hover {
+    font-family: 'Inter';
+    color: black;
+    text-decoration: none;
+}
+
+.categoryBox {
+    margin: 20px;
+}

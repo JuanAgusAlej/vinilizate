@@ -1,13 +1,14 @@
 .boxDiscography {
     margin-top: 25px !important;
-    margin-inline: 55px !important;
+    max-width: 90%;
+    max-height: 90%;
     background: #212E35;
     border-radius: 30px !important;
 }
 
 .imgDiscography {
     width: 90%;
-    height: 215px;
+    max-height: 90%;
     margin: 10px;
     background: #9E9898;
     border-radius: 30px;
