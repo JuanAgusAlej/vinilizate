@@ -1,0 +1,23 @@
+.container {
+  background-color: rgb(9, 9, 9);
+  width: 300px;
+  margin: 30px auto;
+  border-radius: 20px;
+}
+
+.header {
+  text-align: center;
+  padding-top: 30px;
+  margin: 30px;
+}
+
+.btn {
+  margin: 30px auto;
+  width: 40%;
+  background-color: steelblue;
+}
+
+.col-6 {
+  margin: 20px auto;
+  width: 70%;
+}
