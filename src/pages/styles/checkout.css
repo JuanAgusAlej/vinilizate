@@ -1,0 +1,12 @@
+.container-checkout {
+  background-color: black;
+  color: azure;
+}
+
+.total {
+  display: flex;
+}
+
+.font-color {
+  color: azure;
+}

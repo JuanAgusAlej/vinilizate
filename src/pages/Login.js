@@ -1,10 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
+import { userLogin } from "../app/user";
+import "./styles/login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const cookies = new Cookies();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -14,23 +21,34 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const onSubmit = () => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
     if (!email && !password) return;
-    axios
-      .get("/login")
-      .then((res) => res.data)
-      .catch(() => console.error("No se ha encontrado el usuario"));
+
+    const { data } = await axios.post("http://localhost:8080/api/users/login", {
+      email,
+      password,
+    });
+    cookies.set("token", data.token, { path: "/" });
+    const res = await axios.get("http://localhost:8080/api/users/me", {
+      withCredentials: true,
+    });
+    console.log("dato", res);
+    dispatch(userLogin(res.data));
+
+    navigate("/");
   };
 
   useEffect(() => {
-    onSubmit();
-  }, []);
+    localStorage.setItem("email", JSON.stringify(email));
+  }, [email]);
 
   return (
-    <div className="container">
-      <h1 className="header">Login</h1>
-      <form className="row g-3">
-        <div className=" col-6">
+    <div className="container-login">
+      <h1 className="header-login">Login</h1>
+      <form>
+        <div className="col-login">
           <label className="col-form-label">Email:</label>
           <br />
           <input
@@ -40,7 +58,7 @@ const Login = () => {
           />
         </div>
         <br />
-        <div className="col-6">
+        <div className="col-login">
           <label className="col-form-label">Password:</label>
           <br />
           <input
@@ -50,9 +68,12 @@ const Login = () => {
           />
         </div>
         <br />
-        <Button className="btn btn-primary" onClick={onSubmit}>
-          Login
-        </Button>
+        <div className="row text-center">
+          <button className="btn btn-login" onClick={onSubmit}>
+            Login
+          </button>
+          <Link to="/register"> Register Now!</Link>
+        </div>
       </form>
     </div>
   );

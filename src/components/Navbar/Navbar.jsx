@@ -1,22 +1,24 @@
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
+import { categorySelected } from '../../app/category';
+import useFetch from '../../hooks/useFetch';
 import './navBar.css';
 
 function BasicExample() {
   const login = false;
   const admin = true;
-  const categorias = [
-    'Rock',
-    'Rock',
-    'ghfgh',
-    'Rock',
-    'Rocfgfghk',
-    'Rock',
-    'Rock',
-    'Rock',
-  ];
+  const url = process.env.REACT_APP_URL;
+  const categorias = useFetch(`${url}/genre/`);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  console.log(location)
+  const handleClik = (id) => {
+    dispatch(categorySelected(id));
+  };
 
+  console.log(categorias);
   return (
     <Navbar expand="lg" fixed="top" className="navbar">
       <Nav defaultActiveKey="/" className="flex-column navMarging">
@@ -58,10 +60,12 @@ function BasicExample() {
         <Nav.Item className="boxItems nav-item">
           Categoria
           <Nav.Item className="categoryBox">
-            {categorias?.map((categoria, i) => (
+            {categorias.data?.map((categoria, i) => (
               <Nav.Link key={i}>
-                <Link to={'/category/:id'}>
-                  <i class="bi bi-vinyl"> {categoria}</i>
+                <Link
+                  to={`/category/${categoria.genre}`}
+                  onClick={()=>handleClik(categoria.id)}>
+                  <i class="bi bi-vinyl"> {categoria.genre}</i>
                 </Link>
               </Nav.Link>
             ))}
