@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { shoppingInitialState } from "../components/ShoppingCart/shoppingReducer";
 import "./styles/checkout.css";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
   const navigate = useNavigate;
@@ -14,8 +15,7 @@ const Checkout = () => {
 
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const totalPrice = itemsPrice + shippingPrice;
-
-  /*  if (!localStorage.getItem("token")) {
+  /* if (!localStorage.getItem("token")) {
     navigate("/login");
     swal({
       title: " Error ",
@@ -68,9 +68,9 @@ const Checkout = () => {
       <div className="total">
         <h4>Total Price</h4>
         <strong>{totalPrice}</strong>
-        <button type="submit" className="btn btn-primary btn-sm">
+        <Link to="/" className="btn btn-primary btn-sm">
           Complete Order
-        </button>
+        </Link>
       </div>
     </div>
   );
