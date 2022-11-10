@@ -24,8 +24,8 @@ const Login = () => {
   };
 
   useEffect(() => {
-    onSubmit();
-  }, []);
+    localStorage.setItem("email", JSON.stringify(email));
+  }, [email]);
 
   return (
     <div className="container">
