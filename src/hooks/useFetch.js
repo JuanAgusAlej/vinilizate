@@ -8,13 +8,21 @@ const useFetch = (url) => {
     data: null,
   });
   const axiosFuntion = async () => {
-    const { data } = await axios(url, {
-      withCredentials: true,
-    });
-    setDataFetch({
-      loading: false,
-      data,
-    });
+    try {
+      const { data } = await axios(url, {
+        withCredentials: true,
+      });
+      setDataFetch({
+        loading: false,
+        data,
+      });
+    } catch (error) {
+      setDataFetch({
+        loading: false,
+        error,
+      });
+      
+    }
   };
   useEffect(() => {
     axiosFuntion();

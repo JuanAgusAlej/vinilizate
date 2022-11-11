@@ -1,52 +1,41 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { CardGroup } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import { CardDiscography } from '../../components/CardDiscography';
 import CardProduct from '../../components/CardProduct/CardProduct';
+import useFetch from '../../hooks/useFetch';
 import './productDetalle.css';
 
 const ProductDetalle = () => {
-  const dato = {
-    price: 45,
-    img: 'https://cdn.shopify.com/s/files/1/0576/8616/3620/products/00042283814127_1024x.jpg?v=1635790052',
-    title: 'Master of Puppets',
-    voto: 5,
+  const { id } = useParams();
+  const urlApi = process.env.REACT_APP_URL;
+  const [extras, setExtras] = useState();
+
+  const disco = useFetch(`${urlApi}/products/${id}`);
+  const extraGet = async (url) => {
+    const { data } = await axios(url);
+    const datos = data.discs.slice(0, 4);
+    setExtras(datos);
   };
-  const datesDiscography = [
-    {
-      title: 'ride the lightning',
-      img: 'https://www.todorock.com/wp-content/uploads/2019/06/metallica-ride-the-lightning.jpg',
-      price: 50,
-    },
-    {
-      title: 'Kill em all',
-      img: 'https://www.todorock.com/wp-content/uploads/2019/06/metallica-kill-em-all.jpg',
-      price: 50,
-    },
-    {
-      title: '...And Justice For All',
-      img: 'https://www.futuro.cl/wp-content/uploads/2019/06/Metallica-...And-Justice-For-All.jpeg',
-      price: 50,
-    },
-    {
-      title: 'Death Magnetic',
-      img: 'https://garajedelrock.com/wp-content/uploads/2020/09/Death-Magnetic.jpg',
-      price: 50,
-    },
-    {
-      title: 'Metallica',
-      img: 'https://www.spirit-of-metal.com/cover.php?id_album=624',
-      price: 50,
-    },
-  ];
+  console.log(disco)
+  useEffect(() => {
+    if (disco.data) {
+      extraGet(`${urlApi}/products/disc/${disco.data.genreId}`);
+    }
+  }, [disco.loading]);
+
+  
   return (
     <>
-      <CardProduct dato={dato} />
+      {!disco.data    ? <p>Loguin</p> : <CardProduct dato={disco.data} />}
       <div className="discography">Discografias</div>
 
       <div className="row">
-        {datesDiscography.map((dateDiscography, i) => (
+        {extras?.map((extra) => (
           <div className="col">
-            <CardDiscography key={i} dateDiscography={dateDiscography} />
+            <CardDiscography key={extra.id} dateDiscography={extra} />
           </div>
         ))}
       </div>
