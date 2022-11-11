@@ -31,7 +31,7 @@ function BasicExample() {
 
   useEffect(() => {
     login();
-  }, []);
+  },[]);
 
   const handleClik = (id) => {
     dispatch(categorySelected(id));

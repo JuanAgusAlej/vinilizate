@@ -10,6 +10,7 @@ import Checkout from "./pages/Checkout";
 
 import { Navbar } from './components/Navbar';
 import Cart from "./components/Cart/Cart";
+import { PagesAdmin } from "./pages/PagesAdmin";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/:id" element={<ProductDetalle />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/admin" element={<PagesAdmin />} />
           </Routes>
         </div>
         <div className="col-2">
