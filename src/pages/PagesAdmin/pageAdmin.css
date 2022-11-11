@@ -1,0 +1,32 @@
+
+
+.table-admin{
+    font-style: italic;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: lighter;
+    color: white !important;
+}
+.table-admin td{
+    font-style: italic;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: lighter;
+    color: white !important;
+}
+.table-admin button{
+    font-style: italic;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: lighter;
+    
+
+}
+.table-admin img{
+    max-width:30px;
+
+}
+.delete-btn{
+    display: flex;
+    justify-content: center;
+}
