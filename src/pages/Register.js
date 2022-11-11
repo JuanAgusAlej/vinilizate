@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import "./styles/register.css";
 
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [lastname, setLastname] = useState("");
+  const urlApi = process.env.REACT_APP_URL;
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
   const navigate = useNavigate();
 
   const handleChangeEmail = (e) => {
@@ -23,20 +24,21 @@ const Register = () => {
     console.log(e.target.value);
   };
   const handleChangeLastname = (e) => {
-    setLastname(e.target.value);
+    setLastName(e.target.value);
     console.log(e.target.value);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+
     axios
-      .post("/register", {
+      .post(`${urlApi}/users/register`, {
         email,
         password,
         name,
-        lastname,
+        lastName,
       })
-      .then(() => console.log("User created:"))
-      .then(() => navigate("/"))
+      .then(() => navigate('/login'))
       .catch((error) => console.log(error));
   };
 
