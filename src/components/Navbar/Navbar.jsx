@@ -38,7 +38,6 @@ function BasicExample() {
   };
 
   const logOut = () => {
-    console.log('asdasaszdasd');
     cookies.remove('token');
     dispatch(userLogin(''));
   };

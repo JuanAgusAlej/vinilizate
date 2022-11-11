@@ -1,6 +1,8 @@
-import {  useEffect } from "react";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { CardDiscography } from "../components/CardDiscography";
+import { categorySelected } from '../app/category';
+import { CardDiscography } from '../components/CardDiscography';
 import useFetch from '../hooks/useFetch';
 
 const GridProducts = () => {
@@ -8,16 +10,8 @@ const GridProducts = () => {
   const location = useLocation();
   console.log(location);
   const urlApi = process.env.REACT_APP_URL;
-  const url = location.pathname.includes('category')
-    ? `${urlApi}/genre/`
-    : `${urlApi}/products/`;
+  const url = `${urlApi}/products/`
   const products = useFetch(url);
-  console.log(url);
-  console.log(products);
-  
-  useEffect(() => {
-    console.log(url);
-  }, [url]);
 
   return (
     <>
@@ -26,6 +20,7 @@ const GridProducts = () => {
           {products.loading ? (
             <div>sdasdfsd</div>
           ) : (
+              
             products?.data.map((product) => (
               <div key={product.id} className="col-3">
                 <CardDiscography key={product.id} dateDiscography={product} />

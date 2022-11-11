@@ -11,6 +11,7 @@ import Checkout from "./pages/Checkout";
 import { Navbar } from './components/Navbar';
 import Cart from "./components/Cart/Cart";
 import { PagesAdmin } from "./pages/PagesAdmin";
+import Filtro from "./components/Filtro/Filtro";
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
         <div className="col-8">
           <Routes>
             <Route path="/" index element={<GridProducts />} />
-            <Route path="/category/:id" element={<GridProducts />} />
+            <Route path="/category/:id" element={<Filtro />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/:id" element={<ProductDetalle />} />
