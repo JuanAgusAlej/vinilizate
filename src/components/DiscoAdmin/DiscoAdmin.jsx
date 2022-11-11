@@ -91,9 +91,9 @@ const DiscoAdmin = ({ discos, setActualizar }) => {
           disco: {
             name,
             img,
-            price,
-            rating,
-            stock,
+            price: Number.parseFloat(price),
+            rating:Number.parseInt(rating),
+            stock:Number.parseInt(stock),
             
             },
           artista: {
@@ -105,7 +105,8 @@ const DiscoAdmin = ({ discos, setActualizar }) => {
         return dato;
       },
     }).then(async (result) => {
-      const { artista, disco, genero } = result.value;
+        const { artista, disco, genero } = result.value;
+        console.log(disco)
       try {
           await axios.post(`${url}/artists`, artista).then((res) => {
             console.log(res.data.id)
@@ -143,7 +144,7 @@ const DiscoAdmin = ({ discos, setActualizar }) => {
       <Button
         className="offset-10"
               variant="success"
-              disabled
+              
         onClick={() => newDisco()}>
         New Disco
       </Button>
