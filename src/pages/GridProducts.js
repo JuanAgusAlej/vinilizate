@@ -1,8 +1,6 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import {  useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import { CardDiscography } from "../components/CardDiscography";
-import { fakeData } from '../hooks/seed';
 import useFetch from '../hooks/useFetch';
 
 const GridProducts = () => {
@@ -16,14 +14,7 @@ const GridProducts = () => {
   const products = useFetch(url);
   console.log(url);
   console.log(products);
-  /* const fetchProducts = async () => {
-    const {
-      data: { results },
-    } = await axios.get("/products");
-    console.log(results);
-    setProducts(results);
-  };
-*/
+  
   useEffect(() => {
     console.log(url);
   }, [url]);
