@@ -9,26 +9,29 @@ import ProductDetalle from "./pages/ProductDetalle/ProductDetalle";
 import Checkout from "./pages/Checkout";
 
 import { Navbar } from './components/Navbar';
+import Cart from "./components/Cart/Cart";
 
 
 function App() {
   return (
     <BrowserRouter>
-      <div class="row">
-        <div class="col-2">
+      <div className="row">
+        <div className="col-2">
           <Navbar />
         </div>
-        <div class="col-8">
+        <div className="col-8">
           <Routes>
             <Route path="/" index element={<GridProducts />} />
-            <Route path="/category/:id" index element={<GridProducts />} />
+            <Route path="/category/:id" element={<GridProducts />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/:id" element={<ProductDetalle />} />
             <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </div>
-        <div class="col-2"></div>
+        <div className="col-2">
+        <Cart />
+        </div>
       </div>
     </BrowserRouter>
   );

@@ -1,56 +1,83 @@
+import axios from 'axios';
+import { useEffect } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { useDispatch } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { categorySelected } from '../../app/category';
+import { userLogin } from '../../app/user';
 import useFetch from '../../hooks/useFetch';
 import './navBar.css';
+import Cookies from 'universal-cookie';
 
 function BasicExample() {
-  const login = false;
-  const admin = true;
+  const urlApi = process.env.REACT_APP_URL;
+  const { user } = useSelector((state) => state);
+  const cookies = new Cookies();
   const url = process.env.REACT_APP_URL;
   const categorias = useFetch(`${url}/genre/`);
   const dispatch = useDispatch();
-  const location = useLocation();
-  console.log(location)
+
+  const login = async () => {
+    try {
+      const res = await axios(`${urlApi}/users/me`, {
+        withCredentials: true,
+      });
+      if (res.data) {
+        dispatch(userLogin(res.data));
+      }
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    login();
+  }, []);
+
   const handleClik = (id) => {
     dispatch(categorySelected(id));
   };
 
-  console.log(categorias);
+  const logOut = () => {
+    console.log('asdasaszdasd');
+    cookies.remove('token');
+    dispatch(userLogin(''));
+  };
+
   return (
     <Navbar expand="lg" fixed="top" className="navbar">
       <Nav defaultActiveKey="/" className="flex-column navMarging">
         <Nav.Item className="boxItems">
           <Nav.Link className="hovverLink">
             <Link to={'/'}>
-              <i class="bi bi-house"> Home</i>
+              <i className="bi bi-house"> Home</i>
             </Link>
           </Nav.Link>
           <Nav.Link>
             <Link to={'/order'}>
-              <i class="bi bi-receipt"></i> Ordenes
+              <i className="bi bi-receipt"></i> Ordenes
             </Link>
           </Nav.Link>
           <Nav.Link>
             <Link to={'/wish'}>
-              <i class="bi bi-heart"></i> Lista de deseo
+              <i className="bi bi-heart"></i> Lista de deseo
             </Link>
           </Nav.Link>
           <Nav.Link>
-            {login ? (
-              <i class="bi bi-power"> Cerrar Seccion</i>
+            {user ? (
+              <i className="bi bi-power" onClick={() => logOut()}>
+                {' '}
+                Cerrar Seccion
+              </i>
             ) : (
               <Link to={'/login'}>
-                <i class="bi bi-key"> Iniciar Seccion</i>
+                <i className="bi bi-key"> Iniciar Seccion</i>
               </Link>
             )}
           </Nav.Link>
-          {admin ? (
+          {user.role === 'admin' ? (
             <Nav.Link>
               <Link to={'/admin'}>
-                <i class="bi bi-person-rolodex"> Administrar</i>
+                <i className="bi bi-person-rolodex"> Administrar</i>
               </Link>
             </Nav.Link>
           ) : (
@@ -64,8 +91,8 @@ function BasicExample() {
               <Nav.Link key={i}>
                 <Link
                   to={`/category/${categoria.genre}`}
-                  onClick={()=>handleClik(categoria.id)}>
-                  <i class="bi bi-vinyl"> {categoria.genre}</i>
+                  onClick={() => handleClik(categoria.id)}>
+                  <i className="bi bi-vinyl"> {categoria.genre}</i>
                 </Link>
               </Nav.Link>
             ))}

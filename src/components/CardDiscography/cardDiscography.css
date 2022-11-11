@@ -28,5 +28,13 @@ font-family: 'Inter';
 font-style: normal;
 font-size: 1em;
 line-height: 19px;
+margin: 0px;
 color: #FFFFFF;
+}
+.link a{
+    text-decoration: none;
+}
+.btn-cart{
+    margin-bottom: 15px;
+    
 }

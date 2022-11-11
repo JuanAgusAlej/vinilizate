@@ -43,9 +43,9 @@ const ProductDetalle = () => {
       <CardProduct dato={dato} />
       <div className="discography">Discografias</div>
 
-      <div class="row">
+      <div className="row">
         {datesDiscography.map((dateDiscography, i) => (
-          <div class="col">
+          <div className="col">
             <CardDiscography key={i} dateDiscography={dateDiscography} />
           </div>
         ))}

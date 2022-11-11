@@ -8,7 +8,9 @@ const useFetch = (url) => {
     data: null,
   });
   const axiosFuntion = async () => {
-    const { data } = await axios(url);
+    const { data } = await axios(url, {
+      withCredentials: true,
+    });
     setDataFetch({
       loading: false,
       data,
