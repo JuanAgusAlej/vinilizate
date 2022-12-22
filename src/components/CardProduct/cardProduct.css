@@ -1,0 +1,39 @@
+.titleProduct {
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 2.5em;
+    color: #FFFFFF;
+}
+
+.artistaProduct {
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 1.5em;
+    line-height: 44px;
+    color: #FFFFFF;
+}
+
+.priceProduct {
+    font-style: normal;
+    font-size: 1.5em;
+    color: #FFFFFF;
+}
+
+.conteiner {
+    width: 500px;
+    margin-top: 50px;
+        background: #334752;
+        border-radius: 30px !important;
+}
+
+.imgProduct {
+    min-width: 200px;
+background: #D9D9D9;
+border-radius: 30px;
+}
+button {
+    padding: 0;
+    margin: 3px;
+    border: none;
+    background: none;
+}
